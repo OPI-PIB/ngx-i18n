@@ -1,9 +1,1 @@
-{
-	"languageSwitcher.label": "Zmień język",
-	"languageSwitcher.lang.en-us": "English",
-	"languageSwitcher.lang.pl-pl": "Polish",
-	"messages.0": "Brak wiadomości",
-	"messages.1": "Jedna wiadomość",
-	"messages.other": "{{count}} wiadomości",
-	"page.home.title": "Witaj"
-}
+{"languageSwitcher.label":"Zmień język","languageSwitcher.lang.en-us":"English","languageSwitcher.lang.pl-pl":"Polish","messages.0":"Brak wiadomości","messages.1":"Jedna wiadomość","messages.other":"{{count}} wiadomości","page.home.title":"Witaj"}
