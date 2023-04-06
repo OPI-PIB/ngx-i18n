@@ -12,9 +12,11 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ngx-i18n": [
+      "@ngx-i18n": [
         "dist/ngx-i18n"
-      ]
+      ],
+	  "@core/*": ["./projects/e2e-app/src/app/core/*"],
+	  "@translations/*": ["./projects/e2e-app/src/translations/*"],
     },
     "declaration": false,
     "downlevelIteration": true,
