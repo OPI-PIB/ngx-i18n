@@ -1,0 +1,46 @@
+<h1>{{ "page.home.title" | translate }}</h1>
+
+<h2>Date</h2>
+<div>{{ today | date : undefined : undefined : locale.toString() }}</div>
+
+<div>
+	{{ today | i18nDate }}
+</div>
+
+<div>
+	{{ today | i18nDate : undefined : undefined : "pl-PL" }}
+</div>
+
+<h2>Currency</h2>
+<div>
+	{{ 1.2345 | i18nCurrency }}
+</div>
+<div>
+	{{
+		1.2345
+			| currency : undefined : undefined : undefined : locale.toString()
+	}}
+</div>
+
+<h2>Plural</h2>
+<div>
+	{{
+		messages0.length
+			| i18nPlural : messageMapping
+			| translate : { count: messages0.length }
+	}}
+</div>
+<div>
+	{{
+		messages1.length
+			| i18nPlural : messageMapping
+			| translate : { count: messages1.length }
+	}}
+</div>
+<div test-id="messages">
+	{{
+		messages2.length
+			| i18nPlural : messageMapping
+			| translate : { count: messages2.length }
+	}}
+</div>

@@ -1,1 +1,3 @@
-# ngx-i18n
+# NgxI18n
+
+[Documentation](projects/ngx-i18n/README.md)

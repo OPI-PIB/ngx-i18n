@@ -1,0 +1,16 @@
+{
+  "name": "@opi_pib/ngx-i18n",
+  "version": "15.2.0",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+	"@ngx-translate/core": "^14.0.0",
+	"@ngx-translate/http-loader": "^7.0.0",
+    "@opi_pib/ts-utility": "^1.1.6",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
