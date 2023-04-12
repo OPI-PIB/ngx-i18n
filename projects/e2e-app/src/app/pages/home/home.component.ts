@@ -18,7 +18,7 @@ import { t } from '@translations/translation-marker';
 	imports: [CommonModule, I18nModule],
 })
 export class HomeComponent {
-	today = new Date('06.04.2023');
+	today = new Date('2023-04-06');
 
 	messages0: string[] = [];
 
@@ -32,5 +32,7 @@ export class HomeComponent {
 		other: t('messages.other'),
 	};
 
-	constructor(@Inject(LOCALE_ID) protected locale: I18nLocaleId) {}
+	constructor(@Inject(LOCALE_ID) protected locale: I18nLocaleId) {
+		console.log(this.today);
+	}
 }

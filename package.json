@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:e2e-app": "ng serve e2e-app",
-    "build:e2e-app": "ng build e2e-app",
-    "build:ngx-i18n": "ng build ngx-i18n",
-    "test": "ng test",
-	"translate:build": "translate build --source=\"./projects/e2e-app/src/app/**/*+(.ts|.html)\" --dist=./projects/e2e-app/translations --i18n=./projects/e2e-app/src/app/core/i18n/translations/ --langs=en-US --langs=pl-PL"
+    "ngx-i18n:build": "ng build ngx-i18n",
+    "e2e-app:start": "ng serve e2e-app",
+    "e2e-app:build": "ng build e2e-app",
+    "e2e-app:test": "cypress run -b firefox",
+    "e2e-app:translate:build": "translate build --source=\"./projects/e2e-app/src/app/**/*+(.ts|.html)\" --dist=./projects/e2e-app/translations --i18n=./projects/e2e-app/src/app/core/i18n/translations/ --langs=en-US --langs=pl-PL"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +32,8 @@
     "@angular/compiler-cli": "^15.2.0",
     "@opi_pib/node-translate": "^1.1.3",
     "@types/jasmine": "~4.3.0",
+    "cypress": "^12.9.0",
+    "cypress-image-diff-js": "^1.23.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
