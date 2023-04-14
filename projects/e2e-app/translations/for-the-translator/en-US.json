@@ -1,9 +1,15 @@
 {
+	"first": "",
 	"languageSwitcher.label": "Change language",
 	"languageSwitcher.lang.en-us": "Angielski",
 	"languageSwitcher.lang.pl-pl": "Polski",
 	"messages.0": "No messages",
 	"messages.1": "One message",
 	"messages.other": "{{count}} messages",
-	"page.home.title": "Hello"
+	"page.home.title": "Title",
+	"second": "",
+	"select.first": "First",
+	"select.other": "Other",
+	"select.second": "Second",
+	"third": ""
 }

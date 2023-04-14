@@ -10,21 +10,19 @@ import { languages } from '@translations/translation-languages';
 import { LanguageSwitcherContainerComponent } from '@core/i18n/components/language-switcher-container/language-switcher-container.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-	HttpClientModule,
-	I18nRootModule.forRoot({
-		languages,
-		localesToRegister: [pl],
-		logMissingTranslations: true
-	}),
-    HomeComponent,
-	LanguageSwitcherContainerComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		I18nRootModule.forRoot({
+			languages,
+			localesToRegister: [pl],
+			logMissingTranslations: true,
+		}),
+		HomeComponent,
+		LanguageSwitcherContainerComponent,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,4 +8,6 @@ import { TranslationKey } from '@translations/translation-key';
 	standalone: true,
 	pure: false,
 })
-export class I18nTranslatePipe extends I18nTranslatePipeBase<TranslationKey> implements PipeTransform { }
+export class I18nTranslatePipe
+	extends I18nTranslatePipeBase<TranslationKey>
+	implements PipeTransform {}

@@ -16,7 +16,7 @@
         "dist/ngx-i18n"
       ],
 	  "@core/*": ["./projects/e2e-app/src/app/core/*"],
-	  "@translations/*": ["./projects/e2e-app/src/translations/*"],
+	  "@translations/*": ["./projects/e2e-app/translations/*"],
     },
     "declaration": false,
     "downlevelIteration": true,
