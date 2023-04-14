@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.success {
+	color: green;
+}
+
+.warning {
+	color: orange;
+}
+
+.danger {
+	color: red;
+}
+
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}

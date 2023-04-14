@@ -7,7 +7,7 @@
     "e2e-app:start": "ng serve e2e-app",
     "e2e-app:build": "ng build e2e-app",
     "e2e-app:test": "cypress run -b firefox",
-    "e2e-app:translate:build": "translate build --source=\"./projects/e2e-app/src/app/**/*+(.ts|.html)\" --dist=./projects/e2e-app/translations --i18n=./projects/e2e-app/src/app/core/i18n/translations/ --langs=en-US --langs=pl-PL"
+    "e2e-app:translate:build": "translate build --source=\"./projects/e2e-app/src/app/**/*+(.ts|.html)\" --dist=./projects/e2e-app/translations --i18n=./projects/e2e-app/src/app/core/i18n/translations --langs=en-US --langs=pl-PL"
   },
   "private": true,
   "dependencies": {

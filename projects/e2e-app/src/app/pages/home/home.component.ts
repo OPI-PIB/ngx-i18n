@@ -32,7 +32,11 @@ export class HomeComponent {
 		other: t('messages.other'),
 	};
 
-	constructor(@Inject(LOCALE_ID) protected locale: I18nLocaleId) {
-		console.log(this.today);
-	}
+	selectMapping: { [k: string]: TranslationKey } = {
+		first: t('select.first'),
+		second: t('select.second'),
+		other: t('select.other'),
+	};
+
+	constructor(@Inject(LOCALE_ID) protected locale: I18nLocaleId) {}
 }

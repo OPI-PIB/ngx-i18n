@@ -1,24 +1,22 @@
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 
 import { I18nLocaleIdBase } from '../i18n-localeId-base';
 
-type TransformType = ReturnType<CurrencyPipe['transform']>;
-type CurrencyCodeType = Parameters<CurrencyPipe['transform']>[1];
-type DisplayType = Parameters<CurrencyPipe['transform']>[2];
-type DigitsInfoType = Parameters<CurrencyPipe['transform']>[3];
-type LocaleType = Parameters<CurrencyPipe['transform']>[4];
+type TransformType = ReturnType<DecimalPipe['transform']>;
+type DigitsInfoType = Parameters<DecimalPipe['transform']>[1];
+type LocaleType = Parameters<DecimalPipe['transform']>[2];
 
 @Pipe({
-	name: 'i18nCurrency',
+	name: 'i18nDecimal',
 	standalone: true,
 	pure: false,
 })
-export class I18nCurrencyPipeBase<
+export class I18nDecimalPipeBase<
 		TranslationKey extends string,
 		TranslationLanguageEnum extends string
 	>
-	extends CurrencyPipe
+	extends DecimalPipe
 	implements PipeTransform
 {
 	constructor(
@@ -33,34 +31,22 @@ export class I18nCurrencyPipeBase<
 
 	override transform(
 		value: number | string,
-		currencyCode?: CurrencyCodeType,
-		display?: DisplayType,
 		digitsInfo?: DigitsInfoType,
 		locale?: LocaleType
 	): TransformType;
 
 	override transform(
 		value: null | undefined,
-		currencyCode?: CurrencyCodeType,
-		display?: DisplayType,
 		digitsInfo?: DigitsInfoType,
 		locale?: LocaleType
 	): null;
 
 	override transform(
 		value: number | string | null | undefined,
-		currencyCode?: CurrencyCodeType,
-		display?: DisplayType,
 		digitsInfo?: DigitsInfoType,
 		locale?: LocaleType
 	): TransformType {
 		locale = locale || this.localeId.toString();
-		return super.transform(
-			value,
-			currencyCode,
-			display,
-			digitsInfo,
-			locale
-		);
+		return super.transform(value, digitsInfo, locale);
 	}
 }

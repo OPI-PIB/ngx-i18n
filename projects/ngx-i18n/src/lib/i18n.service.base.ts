@@ -10,13 +10,14 @@ import { TranslationLanguageBase } from './translation-language-base';
 	providedIn: 'root',
 })
 export abstract class I18nServiceBase<
-		TranslationKey extends string,
-		TranslationLanguageEnum extends string,
-		TranslationLanguage extends TranslationLanguageBase<TranslationLanguageEnum, TranslationKey>
-	> {
-	constructor(
-		protected translateService: TranslateService,
-	) { }
+	TranslationKey extends string,
+	TranslationLanguageEnum extends string,
+	TranslationLanguage extends TranslationLanguageBase<
+		TranslationLanguageEnum,
+		TranslationKey
+	>
+> {
+	constructor(protected translateService: TranslateService) {}
 
 	abstract getCurrentLanguage(): TranslationLanguage;
 
@@ -32,12 +33,15 @@ export abstract class I18nServiceBase<
 
 	translate$(
 		key: TranslationKey | TranslationKey[],
-		interpolateParams?: TranslationParams,
+		interpolateParams?: TranslationParams
 	): Observable<string> | Observable<{ [k in TranslationKey]: string }> {
 		return this.translateService.stream(key, interpolateParams);
 	}
 
-	instant(key: TranslationKey, interpolateParams?: TranslationParams): string {
+	instant(
+		key: TranslationKey,
+		interpolateParams?: TranslationParams
+	): string {
 		return this.translateService.instant(key, interpolateParams);
 	}
 

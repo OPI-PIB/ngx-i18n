@@ -1,46 +1,101 @@
 <h1>{{ "page.home.title" | translate }}</h1>
 
-<h2>Date</h2>
-<div>{{ today | date : undefined : undefined : locale.toString() }}</div>
+<div class="grid">
+	<div>
+		<h2>Date</h2>
+		<div class="danger">{{ today | date }}</div>
+		<div class="success">
+			{{ today | date : undefined : undefined : locale.toString() }}
+		</div>
+		<div class="success">
+			{{ today | i18nDate }}
+		</div>
+		<div class="warning">
+			{{ today | i18nDate : undefined : undefined : "pl-PL" }}
+		</div>
 
-<div>
-	{{ today | i18nDate }}
-</div>
+		<h2>Currency</h2>
+		<div class="danger">
+			{{ 1.2345 | currency }}
+		</div>
+		<div class="success">
+			{{ 1.2345 | i18nCurrency }}
+		</div>
+		<div class="success">
+			{{
+				1.2345
+					| currency
+						: undefined
+						: undefined
+						: undefined
+						: locale.toString()
+			}}
+		</div>
+	</div>
 
-<div>
-	{{ today | i18nDate : undefined : undefined : "pl-PL" }}
-</div>
+	<div>
+		<h2>Decimal</h2>
+		<div class="danger">
+			{{ 1.2345 | number }}
+		</div>
+		<div class="success">
+			{{ 1.2345 | i18nDecimal }}
+		</div>
+		<div class="success">
+			{{ 1.2345 | number : undefined : locale.toString() }}
+		</div>
+		<div class="warning">
+			{{ 1.2345 | i18nDecimal : undefined : "pl-PL" }}
+		</div>
 
-<h2>Currency</h2>
-<div>
-	{{ 1.2345 | i18nCurrency }}
-</div>
-<div>
-	{{
-		1.2345
-			| currency : undefined : undefined : undefined : locale.toString()
-	}}
-</div>
+		<h2>Percent</h2>
+		<div class="danger">
+			{{ 1.23456 | percent : "1.1-2" }}
+		</div>
+		<div class="success">
+			{{ 1.23456 | i18nPercent : "1.1-2" }}
+		</div>
+		<div class="success">
+			{{ 1.23456 | percent : "1.1-2" : locale.toString() }}
+		</div>
+		<div class="warning">
+			{{ 1.23456 | i18nPercent : "1.1-2" : "pl-PL" }}
+		</div>
+	</div>
 
-<h2>Plural</h2>
-<div>
-	{{
-		messages0.length
-			| i18nPlural : messageMapping
-			| translate : { count: messages0.length }
-	}}
-</div>
-<div>
-	{{
-		messages1.length
-			| i18nPlural : messageMapping
-			| translate : { count: messages1.length }
-	}}
-</div>
-<div test-id="messages">
-	{{
-		messages2.length
-			| i18nPlural : messageMapping
-			| translate : { count: messages2.length }
-	}}
+	<div>
+		<h2>Plural</h2>
+		<div class="success">
+			{{
+				messages0.length
+					| i18nPlural : messageMapping
+					| translate : { count: messages0.length }
+			}}
+		</div>
+		<div class="success">
+			{{
+				messages1.length
+					| i18nPlural : messageMapping
+					| translate : { count: messages1.length }
+			}}
+		</div>
+		<div class="success" test-id="messages">
+			{{
+				messages2.length
+					| i18nPlural : messageMapping
+					| translate : { count: messages2.length }
+			}}
+		</div>
+
+		<h2>Select</h2>
+		<div class="success">
+			{{ "first" | i18nSelect : selectMapping | translate }}
+		</div>
+		<div class="success">
+			{{ "second" | i18nSelect : selectMapping | translate }}
+		</div>
+		<div class="success">
+			{{ "third" | i18nSelect : selectMapping | translate }}
+		</div>
+	</div>
 </div>

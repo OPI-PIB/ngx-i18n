@@ -6,16 +6,21 @@ import { Pipe, PipeTransform } from '@angular/core';
 	standalone: true,
 	pure: false,
 })
-export class I18nPluralPipeBase<TranslationKey extends string> extends I18nPluralPipe implements PipeTransform {
-	constructor(
-		localization: NgLocalization,
-	) {
+export class I18nPluralPipeBase<TranslationKey extends string>
+	extends I18nPluralPipe
+	implements PipeTransform
+{
+	constructor(localization: NgLocalization) {
 		super(localization);
 	}
 
-	override transform(value: number | null | undefined, pluralMap: {
-        [count: string]: TranslationKey;
-    }, locale?: string): TranslationKey {
+	override transform(
+		value: number | null | undefined,
+		pluralMap: {
+			[count: string]: TranslationKey;
+		},
+		locale?: string
+	): TranslationKey {
 		return super.transform(value, pluralMap, locale) as TranslationKey;
 	}
 }

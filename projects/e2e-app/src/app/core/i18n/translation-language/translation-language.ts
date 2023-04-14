@@ -8,8 +8,10 @@ import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
 import { TranslationLanguageBase } from '@ngx-i18n';
 
-export class TranslationLanguage extends ValueObject<TranslationLanguageProps>
-	implements TranslationLanguageBase<TranslationLanguageEnum, TranslationKey> {
+export class TranslationLanguage
+	extends ValueObject<TranslationLanguageProps>
+	implements TranslationLanguageBase<TranslationLanguageEnum, TranslationKey>
+{
 	constructor(protected override readonly props: TranslationLanguageProps) {
 		super(props);
 	}
