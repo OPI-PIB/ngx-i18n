@@ -1,15 +1,15 @@
 {
-  "name": "@opi_pib/ngx-i18n",
-  "version": "16.0.0",
-  "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0",
-	"@ngx-translate/core": "^15.0.0",
-    "@opi_pib/ts-utility": "^1.1.7",
-    "rxjs": "~7.8.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+	"name": "@opi_pib/ngx-i18n",
+	"version": "16.0.1",
+	"peerDependencies": {
+		"@angular/common": "^16.0.0",
+		"@angular/core": "^16.0.0",
+		"@ngx-translate/core": "^15.0.0",
+		"@opi_pib/ts-utility": "^1.1.9",
+		"rxjs": "~7.8.0"
+	},
+	"dependencies": {
+		"tslib": "^2.3.0"
+	},
+	"sideEffects": false
 }
