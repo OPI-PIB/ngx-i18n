@@ -1,11 +1,11 @@
 {
 	"name": "@opi_pib/ngx-i18n",
-	"version": "16.0.2",
+	"version": "16.0.3",
 	"peerDependencies": {
 		"@angular/common": "^16.0.0",
 		"@angular/core": "^16.0.0",
 		"@ngx-translate/core": "^15.0.0",
-		"@opi_pib/ts-utility": "^1.1.9",
+		"@opi_pib/ts-utility": "^1.1.11",
 		"rxjs": "~7.8.0"
 	},
 	"dependencies": {
