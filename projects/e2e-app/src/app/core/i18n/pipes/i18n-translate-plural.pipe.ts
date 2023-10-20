@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { I18nPluralPipeBase } from '@ngx-i18n';
-
 import { TranslationKey } from '@translations/translation-key';
 
 @Pipe({

@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { Maybe } from '@opi_pib/ts-utility';
 import { CommonModule } from '@angular/common';
-
 import { I18nModule } from '@core/i18n';
 
 import { TranslationLanguage } from '../../translation-language';

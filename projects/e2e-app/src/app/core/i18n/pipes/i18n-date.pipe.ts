@@ -1,10 +1,9 @@
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
-
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
+import { I18nDatePipeBase } from '@ngx-i18n';
 
 import { I18nLocaleId } from '../i18n-localeId';
-import { I18nDatePipeBase } from '@ngx-i18n';
 
 @Pipe({
 	name: 'i18nDate',

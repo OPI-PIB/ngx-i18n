@@ -1,5 +1,4 @@
 import { Language } from '../../language';
-
 import { SnapshotOptions } from './snapshot-options';
 
 export function checkScreenshot(

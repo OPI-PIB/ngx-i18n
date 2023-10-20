@@ -9,16 +9,15 @@ import {
 } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { always, Is } from '@opi_pib/ts-utility';
-
 import { TranslationKey } from '@translations/translation-key';
 import {
 	isTranslationLanguageEnum,
 	TranslationLanguageEnum,
 } from '@translations/translation-languages';
+import { I18nServiceBase } from '@ngx-i18n';
 
 import { TranslationLanguage } from './translation-language';
 import { I18N_CONFIG, I18nConfig } from './i18n.config';
-import { I18nServiceBase } from '@ngx-i18n';
 
 @Injectable({
 	providedIn: 'root',

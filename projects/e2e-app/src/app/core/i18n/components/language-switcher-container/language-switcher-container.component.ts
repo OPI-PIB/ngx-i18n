@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { map, Observable } from 'rxjs';
-
 import { I18nService } from '@core/i18n';
 
 import { TranslationLanguage } from '../../translation-language';
