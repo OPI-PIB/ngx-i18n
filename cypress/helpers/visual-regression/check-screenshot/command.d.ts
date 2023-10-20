@@ -1,5 +1,4 @@
 import { Language } from '../../language';
-
 import { checkScreenshot } from '.';
 import { SnapshotOptions } from './snapshot-options';
 

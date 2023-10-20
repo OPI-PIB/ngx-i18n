@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-class-members */
 import { PercentPipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 

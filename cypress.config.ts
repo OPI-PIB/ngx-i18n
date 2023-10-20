@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from 'cypress';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin');
 
 export default defineConfig({

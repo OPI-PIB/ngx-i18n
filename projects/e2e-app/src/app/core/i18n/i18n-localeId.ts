@@ -1,10 +1,9 @@
 import { LOCALE_ID, Provider } from '@angular/core';
-
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
+import { I18nLocaleIdBase } from '@ngx-i18n';
 
 import { I18nService } from './i18n.service';
-import { I18nLocaleIdBase } from '@ngx-i18n';
 
 export class I18nLocaleId extends I18nLocaleIdBase<
 	TranslationKey,

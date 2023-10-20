@@ -1,12 +1,11 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
-
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
+import { TranslationLanguageBase } from '@ngx-i18n';
 
 import { TranslationLanguageProps } from './translation-language-props';
 import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
-import { TranslationLanguageBase } from '@ngx-i18n';
 
 export class TranslationLanguage
 	extends ValueObject<TranslationLanguageProps>
