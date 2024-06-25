@@ -12,9 +12,7 @@ export class I18nSelectPipeBase<TranslationKey extends string>
 {
 	override transform(
 		value: string | null | undefined,
-		mapping: {
-			[key: string]: TranslationKey;
-		}
+		mapping: Record<string, TranslationKey>
 	): TranslationKey {
 		return super.transform(value, mapping) as TranslationKey;
 	}

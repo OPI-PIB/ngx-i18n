@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-class-members */
 import { CurrencyPipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 

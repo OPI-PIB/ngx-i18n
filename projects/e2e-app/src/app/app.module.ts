@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import pl from '@angular/common/locales/pl';
 import { I18nRootModule } from '@core/i18n';
 import { languages } from '@translations/translation-languages';
@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
-		HttpClientModule,
 		I18nRootModule.forRoot({
 			languages,
 			localesToRegister: [pl],
@@ -22,7 +21,7 @@ import { AppComponent } from './app.component';
 		HomeComponent,
 		LanguageSwitcherContainerComponent,
 	],
-	providers: [],
+	providers: [provideHttpClient()],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

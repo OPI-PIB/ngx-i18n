@@ -26,13 +26,13 @@ export class HomeComponent {
 
 	messages2: string[] = ['1', '2'];
 
-	messageMapping: { [k: string]: TranslationKey } = {
+	messageMapping: Record<string, TranslationKey> = {
 		'=0': t('messages.0'),
 		'=1': t('messages.1'),
 		other: t('messages.other'),
 	};
 
-	selectMapping: { [k: string]: TranslationKey } = {
+	selectMapping: Record<string, TranslationKey> = {
 		first: t('select.first'),
 		second: t('select.second'),
 		other: t('select.other'),

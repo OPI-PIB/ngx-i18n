@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-class-members */
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
