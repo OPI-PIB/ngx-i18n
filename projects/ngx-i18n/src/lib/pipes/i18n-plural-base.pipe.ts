@@ -16,9 +16,7 @@ export class I18nPluralPipeBase<TranslationKey extends string>
 
 	override transform(
 		value: number | null | undefined,
-		pluralMap: {
-			[count: string]: TranslationKey;
-		},
+		pluralMap: Record<string, TranslationKey>,
 		locale?: string
 	): TranslationKey {
 		return super.transform(value, pluralMap, locale) as TranslationKey;

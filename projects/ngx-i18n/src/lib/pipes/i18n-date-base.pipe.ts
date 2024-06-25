@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-class-members */
 import { DatePipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { Is, Maybe } from '@opi_pib/ts-utility';
