@@ -23,13 +23,6 @@
 						}
 					},
 					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"tsConfig": "projects/ngx-i18n/tsconfig.spec.json",
-						"polyfills": ["zone.js", "zone.js/testing"]
-					}
 				}
 			}
 		},
@@ -48,10 +41,7 @@
 						"main": "projects/e2e-app/src/main.ts",
 						"polyfills": ["zone.js"],
 						"tsConfig": "projects/e2e-app/tsconfig.app.json",
-						"assets": [
-							"projects/e2e-app/src/favicon.ico",
-							"projects/e2e-app/src/assets"
-						],
+						"assets": ["projects/e2e-app/src/favicon.ico", "projects/e2e-app/src/assets"],
 						"styles": ["projects/e2e-app/src/styles.css"],
 						"scripts": []
 					},
@@ -98,19 +88,6 @@
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
 						"buildTarget": "e2e-app:build"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"polyfills": ["zone.js", "zone.js/testing"],
-						"tsConfig": "projects/e2e-app/tsconfig.spec.json",
-						"assets": [
-							"projects/e2e-app/src/favicon.ico",
-							"projects/e2e-app/src/assets"
-						],
-						"styles": ["projects/e2e-app/src/styles.css"],
-						"scripts": []
 					}
 				}
 			}
