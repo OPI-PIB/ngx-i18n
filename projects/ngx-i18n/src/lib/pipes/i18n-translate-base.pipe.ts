@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -13,6 +12,6 @@ export class I18nTranslatePipeBase<TranslationKey extends string> extends Transl
 	}
 
 	override transform(query: TranslationKey, ...args: unknown[]): string {
-		return super.transform(query, ...args);
+		return super.transform(query, ...args) as string;
 	}
 }

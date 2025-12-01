@@ -1,13 +1,6 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	EventEmitter,
-	Input,
-	Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { I18nModule } from '@core/i18n/i18n.module';
 import { Maybe } from '@opi_pib/ts-utility';
-import { CommonModule } from '@angular/common';
-import { I18nModule } from '@core/i18n';
 
 import { TranslationLanguage } from '../../translation-language';
 
@@ -16,7 +9,7 @@ import { TranslationLanguage } from '../../translation-language';
 	templateUrl: './language-switcher.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [CommonModule, I18nModule],
+	imports: [I18nModule]
 })
 export class LanguageSwitcherComponent {
 	@Input() languages: Maybe<TranslationLanguage[]>;

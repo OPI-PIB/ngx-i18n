@@ -1,9 +1,4 @@
-import {
-	TranslationLanguageProps,
-	TranslationLanguagePropsSchema,
-} from './translation-language-props';
+import { TranslationLanguageProps, TranslationLanguagePropsSchema } from './translation-language-props';
 
-export const isTranslationLanguageProps = (
-	obj: unknown
-): obj is TranslationLanguageProps =>
+export const isTranslationLanguageProps = (obj: unknown): obj is TranslationLanguageProps =>
 	TranslationLanguagePropsSchema.safeParse(obj).success;

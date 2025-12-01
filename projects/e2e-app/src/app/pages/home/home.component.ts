@@ -1,12 +1,6 @@
-import { CommonModule } from '@angular/common';
-import {
-	ChangeDetectionStrategy,
-	Component,
-	Inject,
-	LOCALE_ID,
-} from '@angular/core';
-import { I18nModule } from '@core/i18n';
+import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID } from '@angular/core';
 import { I18nLocaleId } from '@core/i18n/i18n-localeId';
+import { I18nModule } from '@core/i18n/i18n.module';
 import { TranslationKey } from '@translations/translation-key';
 import { t } from '@translations/translation-marker';
 
@@ -15,7 +9,7 @@ import { t } from '@translations/translation-marker';
 	templateUrl: './home.component.html',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, I18nModule],
+	imports: [I18nModule]
 })
 export class HomeComponent {
 	today = new Date('2023-04-06');
@@ -29,13 +23,13 @@ export class HomeComponent {
 	messageMapping: Record<string, TranslationKey> = {
 		'=0': t('messages.0'),
 		'=1': t('messages.1'),
-		other: t('messages.other'),
+		other: t('messages.other')
 	};
 
 	selectMapping: Record<string, TranslationKey> = {
 		first: t('select.first'),
 		second: t('select.second'),
-		other: t('select.other'),
+		other: t('select.other')
 	};
 
 	constructor(@Inject(LOCALE_ID) protected locale: I18nLocaleId) {}

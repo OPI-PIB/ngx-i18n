@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
-import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { inject, Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { I18nLocaleIdBase } from '../i18n-localeId-base';
 
@@ -12,21 +13,17 @@ type LocaleType = Parameters<CurrencyPipe['transform']>[4];
 @Pipe({
 	name: 'i18nCurrency',
 	standalone: true,
-	pure: false,
+	pure: false
 })
-export class I18nCurrencyPipeBase<
-		TranslationKey extends string,
-		TranslationLanguageEnum extends string
-	>
+export class I18nCurrencyPipeBase<TranslationKey extends string, TranslationLanguageEnum extends string>
 	extends CurrencyPipe
 	implements PipeTransform
 {
+	#TranslateService = inject(TranslateService);
+
 	constructor(
 		@Inject(LOCALE_ID)
-		protected localeId: I18nLocaleIdBase<
-			TranslationKey,
-			TranslationLanguageEnum
-		>
+		protected localeId: I18nLocaleIdBase<TranslationKey, TranslationLanguageEnum>
 	) {
 		super(localeId.toString());
 	}
@@ -54,13 +51,7 @@ export class I18nCurrencyPipeBase<
 		digitsInfo?: DigitsInfoType,
 		locale?: LocaleType
 	): TransformType {
-		locale = locale || this.localeId.toString();
-		return super.transform(
-			value,
-			currencyCode,
-			display,
-			digitsInfo,
-			locale
-		);
+		locale = locale || this.#TranslateService.getCurrentLang() || this.localeId.toString();
+		return super.transform(value, currencyCode, display, digitsInfo, locale);
 	}
 }

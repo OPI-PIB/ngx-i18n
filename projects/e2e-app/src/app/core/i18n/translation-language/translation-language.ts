@@ -1,11 +1,11 @@
+import { TranslationLanguageBase } from '@ngx-i18n';
 import { always, ValueObject } from '@opi_pib/ts-utility';
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
-import { TranslationLanguageBase } from '@ngx-i18n';
 
-import { TranslationLanguageProps } from './translation-language-props';
 import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
+import { TranslationLanguageProps } from './translation-language-props';
 
 export class TranslationLanguage
 	extends ValueObject<TranslationLanguageProps>
@@ -31,5 +31,9 @@ export class TranslationLanguage
 
 	getTranslationKey(): TranslationKey {
 		return translationLanguageMap[this.toDto()].translationKey;
+	}
+
+	get icon() {
+		return translationLanguageMap[this.toDto()].icon;
 	}
 }

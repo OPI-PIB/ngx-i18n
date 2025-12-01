@@ -1,7 +1,7 @@
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { I18nService } from '@core/i18n/i18n.service';
 import { map, Observable } from 'rxjs';
-import { I18nService } from '@core/i18n';
 
 import { TranslationLanguage } from '../../translation-language';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
@@ -10,8 +10,7 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 	selector: 'app-language-switcher-container',
 	templateUrl: './language-switcher-container.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
-	imports: [CommonModule, LanguageSwitcherComponent],
+	imports: [AsyncPipe, LanguageSwitcherComponent]
 })
 export class LanguageSwitcherContainerComponent {
 	otherLanguages$: Observable<TranslationLanguage[]>;
@@ -23,13 +22,7 @@ export class LanguageSwitcherContainerComponent {
 	#getOtherLanguages$(): Observable<TranslationLanguage[]> {
 		return this.i18nService
 			.getCurrentLanguage$()
-			.pipe(
-				map((currentLang) =>
-					this.i18nService
-						.getAvailableLanguages()
-						.filter((lang) => !lang.equals(currentLang))
-				)
-			);
+			.pipe(map((currentLang) => this.i18nService.getAvailableLanguages().filter((lang) => !lang.equals(currentLang))));
 	}
 
 	protected onLanguageSelect(language: TranslationLanguage): void {
