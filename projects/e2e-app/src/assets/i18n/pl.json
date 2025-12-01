@@ -1,0 +1,15 @@
+{
+	"first": "pierwszy",
+	"languageSwitcher.label": "Zmień język",
+	"languageSwitcher.lang.en": "en",
+	"languageSwitcher.lang.pl": "pl",
+	"messages.0": "Brak wiadomości",
+	"messages.1": "Jedna wiadomość",
+	"messages.other": "{{count}} wiadomości",
+	"page.home.title": "Tytuł",
+	"second": "drugi",
+	"select.first": "Pierwszy",
+	"select.other": "Inny",
+	"select.second": "Drugi",
+	"third": "trzeci"
+}

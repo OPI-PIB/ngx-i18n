@@ -39,7 +39,6 @@
 						"outputPath": "dist/e2e-app",
 						"index": "projects/e2e-app/src/index.html",
 						"main": "projects/e2e-app/src/main.ts",
-						"polyfills": ["zone.js"],
 						"tsConfig": "projects/e2e-app/tsconfig.app.json",
 						"assets": ["projects/e2e-app/src/favicon.ico", "projects/e2e-app/src/assets"],
 						"styles": ["projects/e2e-app/src/styles.css"],

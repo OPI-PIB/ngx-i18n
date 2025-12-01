@@ -1,11 +1,9 @@
-{{ "languageSwitcher.label" | translate }}
+{{ 'languageSwitcher.label' | translate }}
 
-<button
-	*ngFor="let language of languages"
-	(click)="onSelect(language)"
-	[attr.test-id]="'change-language-' + language.toDto()"
->
-	<span [attr.lang]="language.toDto()">
-		{{ language.getTranslationKey() | translate }}
-	</span>
-</button>
+@for (language of languages; track $index) {
+	<button (click)="onSelect(language)" [attr.test-id]="'change-language-' + language.toDto()">
+		<span [attr.lang]="language.toDto()">
+			{{ language.getTranslationKey() | translate }}
+		</span>
+	</button>
+}

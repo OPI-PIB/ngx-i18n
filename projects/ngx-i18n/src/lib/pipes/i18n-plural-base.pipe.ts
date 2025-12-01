@@ -4,12 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
 	name: 'i18nPlural',
 	standalone: true,
-	pure: false,
+	pure: false
 })
-export class I18nPluralPipeBase<TranslationKey extends string>
-	extends I18nPluralPipe
-	implements PipeTransform
-{
+export class I18nPluralPipeBase<TranslationKey extends string> extends I18nPluralPipe implements PipeTransform {
 	constructor(localization: NgLocalization) {
 		super(localization);
 	}

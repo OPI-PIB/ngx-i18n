@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { inject, Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Is, Maybe } from '@opi_pib/ts-utility';
 
 import { I18nLocaleIdBase } from '../i18n-localeId-base';
@@ -12,21 +13,17 @@ type LocaleType = Parameters<DatePipe['transform']>[3];
 @Pipe({
 	name: 'i18nDate',
 	standalone: true,
-	pure: false,
+	pure: false
 })
-export class I18nDatePipeBase<
-		TranslationKey extends string,
-		TranslationLanguageEnum extends string
-	>
+export class I18nDatePipeBase<TranslationKey extends string, TranslationLanguageEnum extends string>
 	extends DatePipe
 	implements PipeTransform
 {
+	#TranslateService = inject(TranslateService);
+
 	constructor(
 		@Inject(LOCALE_ID)
-		protected localeId: I18nLocaleIdBase<
-			TranslationKey,
-			TranslationLanguageEnum
-		>
+		protected localeId: I18nLocaleIdBase<TranslationKey, TranslationLanguageEnum>
 	) {
 		super(localeId.toString());
 	}
@@ -38,12 +35,7 @@ export class I18nDatePipeBase<
 		locale?: LocaleType
 	): TransformType;
 
-	override transform(
-		value: null | undefined,
-		format?: FormatType,
-		timezone?: TimezoneType,
-		locale?: LocaleType
-	): null;
+	override transform(value: null | undefined, format?: FormatType, timezone?: TimezoneType, locale?: LocaleType): null;
 
 	override transform(
 		value: Date | string | number | null | undefined,
@@ -52,15 +44,10 @@ export class I18nDatePipeBase<
 		locale?: LocaleType
 	): TransformType;
 
-	override transform(
-		value: Maybe<Date | string | number>,
-		format?: string,
-		timezone?: string,
-		locale?: string
-	) {
+	override transform(value: Maybe<Date | string | number>, format?: string, timezone?: string, locale?: string) {
 		if (!Is.defined(value)) return null;
 
-		locale = locale || this.localeId.toString();
+		locale = locale || this.#TranslateService.getCurrentLang() || this.localeId.toString();
 		return super.transform(value, format, timezone, locale);
 	}
 }

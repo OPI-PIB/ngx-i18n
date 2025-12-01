@@ -1,49 +1,38 @@
-import { Inject, Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import {
-	BehaviorSubject,
-	distinctUntilChanged,
-	map,
-	Observable,
-	tap,
-} from 'rxjs';
-import { DOCUMENT } from '@angular/common';
-import { always, Is } from '@opi_pib/ts-utility';
-import { TranslationKey } from '@translations/translation-key';
-import {
-	isTranslationLanguageEnum,
-	TranslationLanguageEnum,
-} from '@translations/translation-languages';
+import { DOCUMENT, Inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { I18nServiceBase } from '@ngx-i18n';
+import { TranslateService } from '@ngx-translate/core';
+import { always } from '@opi_pib/ts-utility';
+import { TranslationKey } from '@translations/translation-key';
+import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
+import { BehaviorSubject, distinctUntilChanged, map, Observable, tap } from 'rxjs';
 
 import { TranslationLanguage } from './translation-language';
-import { I18N_CONFIG, I18nConfig } from './i18n.config';
 
 @Injectable({
-	providedIn: 'root',
+	providedIn: 'root'
 })
-export class I18nService extends I18nServiceBase<
-	TranslationKey,
-	TranslationLanguageEnum,
-	TranslationLanguage
-> {
-	#langChange$: BehaviorSubject<TranslationLanguage>;
+export class I18nService extends I18nServiceBase<TranslationKey, TranslationLanguageEnum, TranslationLanguage> {
+	#langChange$!: BehaviorSubject<TranslationLanguage>;
+
+	#langChange!: WritableSignal<TranslationLanguage>;
 
 	constructor(
 		protected override translateService: TranslateService,
-		@Inject(DOCUMENT) protected document: Document,
-		@Inject(I18N_CONFIG) protected config: I18nConfig
+		@Inject(DOCUMENT) protected document: Document
 	) {
 		super(translateService);
+	}
 
-		this.registerLocales(this.config.localesToRegister);
-		this.translateService.addLangs(this.config.languages);
+	forRoot(locales: any[]): void {
+		this.registerLocales(locales);
+		this.translateService.addLangs(['en', 'pl']);
 
 		const initialLanguage: TranslationLanguage = this.#getInitialLanguage();
-
-		this.translateService.setDefaultLang(initialLanguage.toDto());
+		this.translateService.setFallbackLang(initialLanguage.toDto());
 		this.translateService.use(initialLanguage.toDto());
+
 		this.#langChange$ = new BehaviorSubject(initialLanguage);
+		this.#langChange = signal<TranslationLanguage>(initialLanguage);
 
 		this.translateService.onLangChange
 			.pipe(
@@ -54,9 +43,23 @@ export class I18nService extends I18nServiceBase<
 				}),
 				tap((lang) => {
 					this.document.documentElement.lang = lang.toDto();
+					this.#langChange.set(lang);
 				})
 			)
 			.subscribe(this.#langChange$);
+	}
+
+	#getInitialLanguage(): TranslationLanguage {
+		const browserLanguage = this.translateService.getBrowserLang();
+		if (isTranslationLanguageEnum(browserLanguage)) {
+			return TranslationLanguage.create({ lang: browserLanguage });
+		}
+
+		return this.getAvailableLanguages()[0];
+	}
+
+	get langChange() {
+		return this.#langChange.asReadonly();
 	}
 
 	getCurrentLanguage(): TranslationLanguage {
@@ -64,7 +67,7 @@ export class I18nService extends I18nServiceBase<
 	}
 
 	getCurrentLanguage$(): Observable<TranslationLanguage> {
-		return this.#langChange$.asObservable().pipe(distinctUntilChanged());
+		return this.#langChange$.pipe(distinctUntilChanged((a, b) => a.equals(b)));
 	}
 
 	getAvailableLanguages(): TranslationLanguage[] {
@@ -73,21 +76,5 @@ export class I18nService extends I18nServiceBase<
 
 			return TranslationLanguage.create({ lang });
 		});
-	}
-
-	#getInitialLanguage(): TranslationLanguage {
-		const browserLang = this.translateService.getBrowserLang();
-
-		if (Is.string(browserLang)) {
-			const languageFromBrowser = this.getAvailableLanguages().find((x) =>
-				x.toDto().startsWith(browserLang)
-			);
-
-			if (Is.instanceOf(TranslationLanguage, languageFromBrowser)) {
-				return languageFromBrowser;
-			}
-		}
-
-		return this.getAvailableLanguages()[0];
 	}
 }
